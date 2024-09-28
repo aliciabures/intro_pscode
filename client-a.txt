@@ -1,4 +1,49 @@
 # Client Task A #
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
+### Task A: Guess the Number Game
 
+**Task:** Write pseudocode for a number guessing game. The computer chooses a random number between 1 and 10, and the player has 3 chances to guess.
+
+**Hints:** Input/output, conditional logic
+
+computer will select integer min:1 max:10
+	this integer is defined as "selection"
+header: "Guess what number I'm thinking of"
+
+*input box: allow integer min:1 max:10
+
+prompt user to enter an integer min:1 max:10
+	this integer is defined as "guess"
+
+if "guess" = "selection" 
+	print: "excellent guess! you win!"
+	show fireworks 
+	end game
+
+if else print: "try again"
+
+clear input box
+prompt user to enter an integer min:1 max:10
+	this integer is defined as "guess 2"
+
+if "guess 2" = "selection" 
+	print: "you got it!"
+	show fireworks
+	end game
+
+if else print: "last chance"
+
+clear input box
+prompt user to enter an integer min:1 max:10 
+	this integer is defined as "guess 3"
+
+if "guess 3" = "selection" 
+	print message: "phew"
+	show fireworks
+	end game
+
+if else 
+	print message: "better luck next time"
+	show crying face
+	end game

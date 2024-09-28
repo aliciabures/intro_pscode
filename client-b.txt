@@ -2,3 +2,79 @@
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
 
+
+### Task B: Find the Spot
+
+**Task:** Develop a mapping (walking) application to find a specific set location in a large warehouse store for a customer. 
+The customer can move north, south, east, or west.
+
+**Hints:** Loops, Variables
+
+I didn't understand the instructions so I asked chat gpt for help on this one. 
+
+Constants for Directions: These represent the possible moves in the warehouse.
+Variables: warehouse is a representation of the store layout. currentLocation and targetLocation track the customer's position and destination.
+Display Function: Displays the current location to the user.
+Movement Calculation: Determines the next move based on the current and target locations.
+Main Navigation Loop: Continuously updates the current location until the target is reached, displaying the path taken.
+Main Function: Gathers input for the target location and starts the navigation process.
+
+
+// Define constants for directions
+CONSTANT NORTH = (0, 1)
+CONSTANT SOUTH = (0, -1)
+CONSTANT EAST = (1, 0)
+CONSTANT WEST = (-1, 0)
+
+// Initialize variables
+LOCATION warehouse[WIDTH][HEIGHT] // 2D array representing the warehouse layout
+COORDINATE currentLocation = (startX, startY) // Starting position of the customer
+COORDINATE targetLocation = (targetX, targetY) // Target location provided by customer
+LIST path // To store the sequence of moves taken
+
+// Function to display the current location
+FUNCTION displayCurrentLocation(currentLocation):
+    PRINT "Current location: " + currentLocation
+
+// Function to calculate the next move towards target
+FUNCTION calculateNextMove(currentLocation, targetLocation):
+    IF currentLocation.x < targetLocation.x THEN
+        RETURN EAST
+    ELSE IF currentLocation.x > targetLocation.x THEN
+        RETURN WEST
+    ELSE IF currentLocation.y < targetLocation.y THEN
+        RETURN NORTH
+    ELSE IF currentLocation.y > targetLocation.y THEN
+        RETURN SOUTH
+    ELSE
+        RETURN NULL // Target reached
+
+// Main function to navigate to the target location
+FUNCTION navigateToTarget(targetLocation):
+    WHILE currentLocation != targetLocation:
+        displayCurrentLocation(currentLocation) // Show current location
+        direction = calculateNextMove(currentLocation, targetLocation)
+
+        IF direction == NULL THEN
+            PRINT "You have reached your target location."
+            BREAK
+        
+        // Update current location based on the direction
+        currentLocation.x += direction.x
+        currentLocation.y += direction.y
+        path.ADD(direction) // Record the move
+
+    PRINT "Path taken to reach target: " + path
+
+// Start the navigation process
+FUNCTION main():
+    // Get initial input for target location
+    PRINT "Enter the target location (x, y): "
+    INPUT targetX, targetY
+    targetLocation = (targetX, targetY)
+
+    // Begin navigation
+    navigateToTarget(targetLocation)
+
+// Call the main function
+main()
